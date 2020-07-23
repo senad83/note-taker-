@@ -1,12 +1,11 @@
 const path = require("path"); // we use to combine path strings
 const fs = require("fs");
-const { request } = require("http");
-const { response } = require("express");
 const router = require("express").Router(); //we use it to create a routes
 
 router.get("/notes",(req, res) =>{ //reading db.json file
     fs.readFile(path.join(__dirname, "../db/db.json"), function (err, data) {
                     if (err) throw err; // if error in reading throw error
+                    console.log (JSON.parse(data), "say data")
                     res.json(JSON.parse(data)); // if not respond with data (all the notes)
                }); // json parse converts notes from string to json format
 }) // res json just anwers in json
